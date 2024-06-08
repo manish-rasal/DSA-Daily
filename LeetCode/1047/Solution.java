@@ -8,17 +8,23 @@
  */
 class Solution {
     public String removeDuplicates(String s) {
-        StringBuilder str = new StringBuilder(s);
-        int stackPtr = -1;
-        for(char c: s.toCharArray()) {
-            if(stackPtr == -1 || c != s.charAt(stackPtr)) {
-                stackPtr++;
-                str.setCharAt(stackPtr, c);
-            } else if(c == s.charAt(stackPtr)){
-                stackPtr--;
+        Stack<Character> st = new Stack<>();
+        int i = 0;
+        while(i < s.length()) {
+            if (st.empty()) {
+                st.push(s.charAt(i));
+            } else {
+                if(st.peek() == s.charAt(i)) {
+                    st.pop();
+                } else {
+                    st.push(s.charAt(i));
+                }
             }
+            i++;
+
         }
-        if(stackPtr == -1) return "";
-        return str.substring(0, stackPtr + 1).toString();
+        StringBuilder result = new StringBuilder();
+        while(!st.empty()) result.append(st.pop());
+        return result.reverse().toString();
     }
 }
