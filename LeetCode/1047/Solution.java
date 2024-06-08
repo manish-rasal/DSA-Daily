@@ -19,6 +19,6 @@ class Solution {
             }
         }
         if(stackPtr == -1) return "";
-        return str.subString(0, stackPtr + 1).toString();
+        return str.substring(0, stackPtr + 1).toString();
     }
 }
