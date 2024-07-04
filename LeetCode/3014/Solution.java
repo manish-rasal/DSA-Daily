@@ -23,6 +23,7 @@ class Solution {
             result += map.get(assignKey);
             assignKey++;
             i++;
+
         }
         return result;
     }
